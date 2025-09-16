@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import useCharacters from '../hooks/useCharacters';
+import CardCharacter from '../components/CardCharacter';
 
 function Personagens() {
   const { characters, loading, getCharacters } = useCharacters();
@@ -10,8 +11,10 @@ function Personagens() {
     <div>Essa merda ta carregando ainda!</div>;
   }
   return (
-    <div className="text-3xl font-bold underline">
-      {characters.map((item) => item.name)}
+    <div className="flex flex-wrap justify-center gap-4">
+      {characters.map((item) => (
+        <CardCharacter key={item.id} character={item} />
+      ))}
     </div>
   );
 }
